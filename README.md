@@ -2,6 +2,7 @@
 
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
 `enum.IntEnum` in the standard library.
+Supports python 3.6+.
 
 ## Installation
 
@@ -32,6 +33,10 @@ class HttpMethod(StrEnum):
 
 print(f"An HTTP method: {HttpMethod.GET}")  # prints "An HTTP method: GET"
 ```
+
+## Why not `enum34-custom`'s `StrEnum`?
+
+Because it's not compatible with modern versions of python ([see issue](https://github.com/kissgyorgy/enum34-custom/issues/7)).
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to
