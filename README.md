@@ -20,7 +20,7 @@ from strenum import StrEnum
 
 class HttpMethod(StrEnum):
     GET = auto()
-    HEAD = auto
+    HEAD = auto()
     POST = auto()
     PUT = auto()
     DELETE = auto()
