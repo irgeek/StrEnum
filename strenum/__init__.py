@@ -6,15 +6,14 @@ __version_info__ = tuple(int(n) for n in __version__.split("."))
 
 
 class StrEnum(str, enum.Enum):
-    def __new__(cls, *args):
-        for arg in args:
-            if not isinstance(arg, (str, enum.auto)):
-                raise TypeError(
-                    "Values of StrEnums must be strings: {} is a {}".format(
-                        repr(arg), type(arg)
-                    )
+    def __new__(cls, value, *args, **kwargs):
+        if not isinstance(value, (str, enum.auto)):
+            raise TypeError(
+                "Values of StrEnums must be strings: {} is a {}".format(
+                    repr(value), type(value)
                 )
-        return super().__new__(cls, *args)
+            )
+        return super().__new__(cls, value, *args, **kwargs)
 
     def __str__(self):
         return self.value
