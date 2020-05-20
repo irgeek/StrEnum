@@ -5,15 +5,15 @@ TWINE_OPTIONS := --disable-progress-bar --skip-existing
 test: .venv/bin/pytest
 	@$< -v
 
-dist: test .venv
+dist: test .venv/bin/versioneer
 	@.venv/bin/python3 setup.py sdist bdist_wheel
 
-upload: dist .venv
+upload: .venv/bin/twine dist
 	@.venv/bin/twine upload \
 		$(TWINE_OPTIONS) \
 		dist/*
 
-upload-test: dist .venv
+upload-test: .venv/bin/twine dist
 	@.venv/bin/twine upload \
 		$(TWINE_OPTIONS) \
 		--repository-url https://test.pypi.org/legacy/ \
@@ -26,6 +26,9 @@ upload-test: dist .venv
 
 .venv/bin/pytest: .venv
 	@.venv/bin/python3 -m pip install .[test]
+
+.venv/bin/twine .venv/bin/versioneer: .venv
+	@.venv/bin/python3 -m pip install .[test,release]
 
 clean:
 	@rm -rf .venv/ dist/ build/ *.egg-info .tox/ .eggs/ .pytest_cache/ .coverage

@@ -23,7 +23,8 @@ setuptools.setup(
             "pytest-pylint<0.16.0",
             # From 2.5.0, pylint complains about the return type of our __str__ method.
             "pylint<2.5.0",
-        ]
+        ],
+        "release": ["twine", "versioneer"],
     },
     setup_requires=["pytest-runner"],
     install_requires=["aenum;python_version<'3.6'"],
