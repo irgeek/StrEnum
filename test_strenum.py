@@ -1,3 +1,4 @@
+# pylint:disable=missing-docstring,invalid-name
 from enum import auto
 from strenum import StrEnum
 

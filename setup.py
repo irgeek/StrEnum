@@ -1,3 +1,4 @@
+# pylint:disable=missing-docstring,invalid-name
 import setuptools
 
 with open("README.md", "r") as fh:
@@ -13,7 +14,17 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/irgeek/StrEnum",
     packages=setuptools.find_packages(),
-    tests_require=["pytest", "pytest-black", "pytest-pylint", "pytest-cov"],
+    extras_require={
+        "test": [
+            "pytest",
+            "pytest-black",
+            "pytest-cov",
+            # From 0.16.0 pytest-lint ignores all files in the repo.
+            "pytest-pylint<0.16.0",
+            # From 2.5.0, pylint complains about the return type of our __str__ method.
+            "pylint<2.5.0",
+        ]
+    },
     setup_requires=["pytest-runner"],
     classifiers=[
         "Development Status :: 4 - Beta",

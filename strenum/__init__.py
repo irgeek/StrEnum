@@ -1,7 +1,13 @@
+# pylint:disable=missing-module-docstring
 import enum
 
 
 class StrEnum(str, enum.Enum):
+    """
+    StrEnum is a Python `enum.Enum` that inherits from `str` to complement
+    `enum.IntEnum` in the standard library.
+    """
+
     def __str__(self):
         return self.value
 
