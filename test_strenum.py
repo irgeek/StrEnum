@@ -48,6 +48,7 @@ def test_str_cmp():
 
 
 def test_nonstring_fails():
+    # pylint:disable=unused-variable
     with pytest.raises(TypeError):
 
         class BadEnum(StrEnum):

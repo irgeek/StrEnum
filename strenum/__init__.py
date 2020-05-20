@@ -14,6 +14,7 @@ class StrEnum(str, enum.Enum):
     StrEnum is a Python `enum.Enum` that inherits from `str` to complement
     `enum.IntEnum` in the standard library.
     """
+
     def __new__(cls, value, *args, **kwargs):
         if not isinstance(value, (str, enum.auto)):
             raise TypeError(
