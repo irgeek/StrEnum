@@ -55,7 +55,7 @@ Tests can be run using `make`:
 make test
 ```
 
-This will create a virutal environment, install the module and it's test
+This will create a virutal environment, install the module and its test
 dependencies and run the tests. Alternatively you can do the same thing
 manually:
 
