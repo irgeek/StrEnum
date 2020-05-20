@@ -5,7 +5,7 @@ TWINE_OPTIONS := --disable-progress-bar --skip-existing
 test: .venv/bin/pytest
 	@$< -v
 
-dist: test .venv/bin/versioneer
+dist: test
 	@.venv/bin/python3 setup.py sdist bdist_wheel
 
 upload: .venv/bin/twine dist
@@ -22,12 +22,11 @@ upload-test: .venv/bin/twine dist
 .venv:
 	@python3 -m venv .venv
 	@.venv/bin/pip3 install --upgrade pip setuptools wheel
-	@.venv/bin/pip3 install --upgrade twine
 
 .venv/bin/pytest: .venv
 	@.venv/bin/python3 -m pip install .[test]
 
-.venv/bin/twine .venv/bin/versioneer: .venv
+.venv/bin/twine: .venv
 	@.venv/bin/python3 -m pip install .[test,release]
 
 clean:

@@ -1,12 +1,14 @@
 # pylint:disable=missing-docstring,invalid-name
 import setuptools
+import versioneer
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="StrEnum",
-    version="0.4.0",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     author="James Sinclair",
     author_email="james@nurfherder.com",
     description="An Enum that inherits from str.",
@@ -24,7 +26,7 @@ setuptools.setup(
             # From 2.5.0, pylint complains about the return type of our __str__ method.
             "pylint<2.5.0",
         ],
-        "release": ["twine", "versioneer"],
+        "release": ["twine"],
     },
     setup_requires=["pytest-runner"],
     install_requires=["aenum;python_version<'3.6'"],

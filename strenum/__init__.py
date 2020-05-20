@@ -1,12 +1,13 @@
-# pylint:disable=missing-module-docstring
 try:
     import aenum as enum
 except ImportError:
     import enum
 
+from ._version import get_versions
 
-__version__ = "0.4.0"
-__version_info__ = tuple(int(n) for n in __version__.split("."))
+__version__ = get_versions()["version"]
+__version_info__ = tuple(int(n) for n in __version__.partition("+")[0].split("."))
+del get_versions
 
 
 class StrEnum(str, enum.Enum):
