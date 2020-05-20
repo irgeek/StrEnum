@@ -3,7 +3,6 @@ try:
     from enum import auto
 except ImportError:
     from aenum import auto
-from enum import auto
 
 import pytest
 
