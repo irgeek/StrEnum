@@ -1,5 +1,8 @@
 # pylint:disable=missing-module-docstring
-import enum
+try:
+    import aenum as enum
+except ImportError:
+    import enum
 
 
 class StrEnum(str, enum.Enum):

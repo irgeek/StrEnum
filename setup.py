@@ -26,6 +26,7 @@ setuptools.setup(
         ]
     },
     setup_requires=["pytest-runner"],
+    install_requires=["aenum;python_version<'3.6'"],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3 :: Only",

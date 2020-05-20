@@ -1,5 +1,8 @@
 # pylint:disable=missing-docstring,invalid-name
-from enum import auto
+try:
+    from enum import auto
+except ImportError:
+    from aenum import auto
 from strenum import StrEnum
 
 
