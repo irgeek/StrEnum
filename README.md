@@ -49,17 +49,20 @@ as part of the test suite.
 
 ## Running the tests
 
-Tests can be run using `setup.py`:
+Tests can be run using `make`:
 
 ```
-python3 setup.py test
+make test
 ```
 
-Or inside a virtualenv:
+This will create a virutal environment, install the module and it's test
+dependencies and run the tests. Alternatively you can do the same thing
+manually:
 
 ```
 python3 -m venv .venv
-.venv/bin/python3 setup.py test
+.venv/bin/pip install .[test]
+.venv/bin/pytest
 ```
 
 ## License
