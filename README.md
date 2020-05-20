@@ -1,5 +1,7 @@
 # StrEnum
 
+[![Build Status](https://travis-ci.org/irgeek/StrEnum.svg?branch=master)](https://travis-ci.org/irgeek/StrEnum)
+
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
 `enum.IntEnum` in the standard library.
 Supports python 3.6+.
