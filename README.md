@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/irgeek/StrEnum.svg?branch=master)](https://travis-ci.org/irgeek/StrEnum)
 
+**N.B. From python 3.10, `enum.StrEnum` is part of the standard library. An identical implementation is available on PyPI for 3.8+ at [`backports.strenum`](https://pypi.org/project/backports.strenum/). The below implementation is not necessarily compatible with either.**
+
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
 `enum.IntEnum` in the standard library.
 Supports python 3.6+.
