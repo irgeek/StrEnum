@@ -26,7 +26,7 @@ class StrEnum(str, enum.Enum):
         return super().__new__(cls, value, *args, **kwargs)
 
     def __str__(self):
-        return self.value
+        return str(self.value)
 
     # pylint: disable=no-self-argument
     # The first argument to this function is documented to be the name of the
