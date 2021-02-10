@@ -34,3 +34,31 @@ class StrEnum(str, enum.Enum):
     # https://docs.python.org/3.6/library/enum.html#using-automatic-values
     def _generate_next_value_(name, *_):
         return name
+
+
+class LowercaseStrEnum(StrEnum):
+    """
+    A subclass of `StrEnum` that the folds the member name to lowercase for the
+    `auto()` value.
+    """
+
+    # pylint: disable=no-self-argument
+    # The first argument to this function is documented to be the name of the
+    # enum member, not `self`:
+    # https://docs.python.org/3.6/library/enum.html#using-automatic-values
+    def _generate_next_value_(name, *_):
+        return name.lower()
+
+
+class UppercaseStrEnum(StrEnum):
+    """
+    A subclass of `StrEnum` that the folds the member name to uppercase for the
+    `auto()` value.
+    """
+
+    # pylint: disable=no-self-argument
+    # The first argument to this function is documented to be the name of the
+    # enum member, not `self`:
+    # https://docs.python.org/3.6/library/enum.html#using-automatic-values
+    def _generate_next_value_(name, *_):
+        return name.upper()
