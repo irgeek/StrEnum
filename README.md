@@ -3,11 +3,8 @@
 [![Build Status](https://github.com/irgeek/StrEnum/workflows/Python%20package/badge.svg)](https://github.com/irgeek/StrEnum/actions)
 
 
-**N.B. From python 3.10, `enum.StrEnum` is part of the standard library. An identical implementation is available on PyPI for 3.8+ at [`backports.strenum`](https://pypi.org/project/backports.strenum/). The below implementation is not necessarily compatible with either.**
-
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
-`enum.IntEnum` in the standard library.
-Supports python 3.6+.
+`enum.IntEnum` in the standard library.  Supports python 3.6+.
 
 ## Installation
 
@@ -37,6 +34,31 @@ class HttpMethod(StrEnum):
 
 
 print(f"An HTTP method: {HttpMethod.GET}")  # prints "An HTTP method: GET"
+```
+
+There are also case-folding versions available:
+
+```pycon
+>>> from pprint import pprint
+>>> from enum import auto
+>>> from strenum import StrEnum, LowercaseStrEnum, UppercaseStrEnum
+>>>
+>>> class Regular(StrEnum):
+...     Member = auto()
+...
+>>>
+>>> class Lower(LowercaseStrEnum):
+...     Member = auto()
+...
+>>>
+>>> class Upper(UppercaseStrEnum):
+...     Member = auto()
+...
+>>>
+>>> pprint((Regular.Member, Lower.Member, Upper.Member))
+( <Regular.Member: 'Member'>,
+    <Lower.Member: 'member'>,
+    <Upper.Member: 'MEMBER'>)
 ```
 
 ## Why not `enum34-custom`'s `StrEnum`?
@@ -72,3 +94,9 @@ python3 -m venv .venv
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+**N.B. Starting with Python 3.10, `enum.StrEnum` is available in the standard
+library.  This implementation is _not_ a drop-in replacement for the standard
+library implementation. Sepcifically, the Python devs have decided to case fold
+name to lowercase by default when `auto()` is used which I think violates the
+principle of least surprise.**
