@@ -1,6 +1,7 @@
 # StrEnum
 
-[![Build Status](https://travis-ci.org/irgeek/StrEnum.svg?branch=master)](https://travis-ci.org/irgeek/StrEnum)
+[![Build Status](https://github.com/irgeek/StrEnum/workflows/Python%20package/badge.svg)](https://github.com/irgeek/StrEnum/actions)
+
 
 **N.B. From python 3.10, `enum.StrEnum` is part of the standard library. An identical implementation is available on PyPI for 3.8+ at [`backports.strenum`](https://pypi.org/project/backports.strenum/). The below implementation is not necessarily compatible with either.**
 
