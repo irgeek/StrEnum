@@ -33,37 +33,73 @@ class HttpMethod(StrEnum):
     PATCH = auto()
 
 
-print(f"An HTTP method: {HttpMethod.GET}")  # prints "An HTTP method: GET"
+assert HttpMethod.GET == "GET"
+
+## You can use StrEnum values just like strings:
+
+import urllib.request
+
+req = urllib.request.Request('https://www.python.org/', method=HttpMethod.HEAD)
+with urllib.request.urlopen(req) as response:
+   html = response.read()
+
+assert len(html) == 0 # HEAD requests do not (usually) include a body
 ```
 
-There are also case-folding versions available:
+There are classes whose `auto()` value folds each member name to upper or lower
+case:
 
-```pycon
->>> from pprint import pprint
->>> from enum import auto
->>> from strenum import StrEnum, LowercaseStrEnum, UppercaseStrEnum
->>>
->>> class Regular(StrEnum):
-...     Member = auto()
-...
->>>
->>> class Lower(LowercaseStrEnum):
-...     Member = auto()
-...
->>>
->>> class Upper(UppercaseStrEnum):
-...     Member = auto()
-...
->>>
->>> pprint((Regular.Member, Lower.Member, Upper.Member))
-( <Regular.Member: 'Member'>,
-    <Lower.Member: 'member'>,
-    <Upper.Member: 'MEMBER'>)
+```python
+from enum import auto
+from strenum import LowercaseStrEnum, UppercaseStrEnum
+
+class Tag(LowercaseStrEnum):
+    Head = auto()
+    Body = auto()
+    Div = auto()
+
+assert Tag.Head == "head"
+assert Tag.Body == "body"
+assert Tag.Div == "div"
+
+class HttpMethod(UppercaseStrEnum):
+    Get = auto()
+    Head = auto()
+    Post = auto()
+
+assert HttpMethod.Get == "GET"
+assert HttpMethod.Head == "HEAD"
+assert HttpMethod.Post == "POST"
 ```
 
-## Why not `enum34-custom`'s `StrEnum`?
+As well as classes whose `auto()` value converts each member name to camelCase,
+PascalCase, kebab-case and snake_case:
 
-Because it's not compatible with modern versions of python ([see issue](https://github.com/kissgyorgy/enum34-custom/issues/7)).
+```python
+from enum import auto
+from strenum import CamelCaseStrEnum, PascalCaseStrEnum
+from strenum import KebabCaseStrEnum, SnakeCaseStrEnum
+
+class CamelTestEnum(CamelCaseStrEnum):
+    OneTwoThree = auto()
+
+
+class PascalTestEnum(PascalCaseStrEnum):
+    OneTwoThree = auto()
+
+
+class KebabTestEnum(KebabCaseStrEnum):
+    OneTwoThree = auto()
+
+
+class SnakeTestEnum(SnakeCaseStrEnum):
+    OneTwoThree = auto()
+
+assert CamelTestEnum.OneTwoThree == "oneTwoThree"
+assert PascalTestEnum.OneTwoThree == "OneTwoThree"
+assert KebabTestEnum.OneTwoThree == "one-two-three"
+assert SnakeTestEnum.OneTwoThree == "one_two_three"
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to
