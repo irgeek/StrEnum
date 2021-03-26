@@ -1,10 +1,5 @@
 # pylint:disable=missing-docstring,invalid-name
-try:
-    from enum import auto
-except ImportError:
-    from aenum import auto
-
-
+from enum import auto
 from strenum import LowercaseStrEnum, UppercaseStrEnum
 
 

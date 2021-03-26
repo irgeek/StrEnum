@@ -1,8 +1,4 @@
-try:
-    import aenum as enum
-except ImportError:
-    import enum
-
+import enum
 from ._version import get_versions
 from ._name_mangler import _NameMangler
 
