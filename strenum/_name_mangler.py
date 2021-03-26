@@ -45,3 +45,10 @@ class _NameMangler:
         """
 
         return "_".join(w.lower() for w in self.words(name))
+
+    def macro(self, name):
+        """
+        Convert a name to snake_case
+        """
+
+        return "_".join(w.upper() for w in self.words(name))
