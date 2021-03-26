@@ -17,13 +17,8 @@ setuptools.setup(
     url="https://github.com/irgeek/StrEnum",
     packages=setuptools.find_packages(),
     extras_require={
-        "test": [
-            "pytest",
-            "pytest-black",
-            "pytest-cov",
-            "pytest-pylint",
-            "pylint",
-        ],
+        "test": ["pytest", "pytest-black", "pytest-cov", "pytest-pylint", "pylint",],
+        "docs": ["sphinx", "sphinx_rtd_theme", "recommonmark",],
         "release": ["twine"],
     },
     setup_requires=["pytest-runner"],
