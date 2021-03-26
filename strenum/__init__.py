@@ -21,6 +21,11 @@ _name_mangler = _NameMangler()
 # `self` arguments.
 # pylint: disable=no-self-argument
 
+"""
+StrEnum contains a collection of subclasses of Python's `enum.Enum` that
+inherit from `str` to complement `enum.IntEnum` in the standard library.
+"""
+
 
 class StrEnum(str, enum.Enum):
     """
@@ -173,3 +178,23 @@ class SnakeCaseStrEnum(StrEnum):
 
     def _generate_next_value_(name, *_):
         return _name_mangler.snake(name)
+
+
+class MacroCaseStrEnum(StrEnum):
+    """
+    A `StrEnum` that the converts values to MACRO_CASE.
+
+    Example usage::
+
+        class Example(MacroCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "UPPER_CASE"
+        assert Example.lower_case == "LOWER_CASE"
+        assert Example.MixedCase == "MIXED_CASE"
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.macro(name)
