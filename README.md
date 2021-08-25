@@ -20,6 +20,14 @@ pip install StrEnum
 from enum import auto
 from strenum import StrEnum
 
+## Manually assign string values
+
+class Shape(StrEnum):
+    CIRCLE = "Circle"
+
+assert Shape.CIRCLE == "Circle"
+
+## Use auto() to assign values as each member name
 
 class HttpMethod(StrEnum):
     GET = auto()
