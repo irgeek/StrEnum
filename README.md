@@ -136,7 +136,7 @@ Contents
 
 * [API Reference](api_ref.md)
 
-**N.B. Starting with Python 3.10, `enum.StrEnum` is available in the standard
+**N.B. Starting with Python 3.11, `enum.StrEnum` is available in the standard
 library.  This implementation is _not_ a drop-in replacement for the standard
 library implementation. Sepcifically, the Python devs have decided to case fold
 name to lowercase by default when `auto()` is used which I think violates the
