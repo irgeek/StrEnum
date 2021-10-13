@@ -4,7 +4,7 @@
 
 
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
-`enum.IntEnum` in the standard library.  Supports python 3.6+.
+`enum.IntEnum` in the standard library. Supports python 3.6+.
 
 ## Installation
 
@@ -20,14 +20,6 @@ pip install StrEnum
 from enum import auto
 from strenum import StrEnum
 
-## Manually assign string values
-
-class Shape(StrEnum):
-    CIRCLE = "Circle"
-
-assert Shape.CIRCLE == "Circle"
-
-## Use auto() to assign values as each member name
 
 class HttpMethod(StrEnum):
     GET = auto()
@@ -109,7 +101,34 @@ assert KebabTestEnum.OneTwoThree == "one-two-three"
 assert SnakeTestEnum.OneTwoThree == "one_two_three"
 ```
 
+As with any Enum you can, of course, manually assign values.
+
+```python
+from strenum import StrEnum
+
+class Shape(StrEnum):
+    CIRCLE = "Circle"
+
+assert Shape.CIRCLE == "Circle"
+```
+
+Doing this with other classes, though, won't manipulate values--whatever you
+assign is the value they will have.
+
+```python
+from strenum import KebabCaseStrEnum
+
+class Shape(KebabCaseStrEnum):
+    CIRCLE = "Circle"
+
+# This will raise an AssertionError because the value wasn't converted to
+# kebab-case.
+
+assert Shape.CIRCLE == "circle"
+```
+
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to
 discuss what you would like to change.
 
@@ -145,7 +164,7 @@ Contents
 * [API Reference](api_ref.md)
 
 **N.B. Starting with Python 3.10, `enum.StrEnum` is available in the standard
-library.  This implementation is _not_ a drop-in replacement for the standard
+library. This implementation is _not_ a drop-in replacement for the standard
 library implementation. Sepcifically, the Python devs have decided to case fold
 name to lowercase by default when `auto()` is used which I think violates the
 principle of least surprise.**
