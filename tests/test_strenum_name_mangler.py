@@ -5,6 +5,7 @@ from strenum import (
     PascalCaseStrEnum,
     KebabCaseStrEnum,
     SnakeCaseStrEnum,
+    MacroCaseStrEnum,
 )
 
 
@@ -50,3 +51,14 @@ def test_snake_case_auto():
     assert TestEnum.One == "one"
     assert TestEnum.OneTwo == "one_two"
     assert TestEnum.OneTwoThree == "one_two_three"
+
+
+def test_macro_case_auto():
+    class TestEnum(MacroCaseStrEnum):
+        One = auto()
+        OneTwo = auto()
+        OneTwoThree = auto()
+
+    assert TestEnum.One == "ONE"
+    assert TestEnum.OneTwo == "ONE_TWO"
+    assert TestEnum.OneTwoThree == "ONE_TWO_THREE"
