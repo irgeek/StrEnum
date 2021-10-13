@@ -42,9 +42,7 @@ class StrEnum(str, enum.Enum):
     def __new__(cls, value, *args, **kwargs):
         if not isinstance(value, (str, enum.auto)):
             raise TypeError(
-                "Values of StrEnums must be strings: {} is a {}".format(
-                    repr(value), type(value)
-                )
+                f"Values of StrEnums must be strings: {value!r} is a {type(value)}"
             )
         return super().__new__(cls, value, *args, **kwargs)
 
