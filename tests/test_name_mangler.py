@@ -2,74 +2,46 @@
 import pytest
 from strenum import _NameMangler
 
-# Test data consists of a starting string and it's expected representation each
-# of the five cases we support:
-#   camelCase
-#   PascalCase
-#   kebab-case
-#   snake-case
-#   MACRO_CASE
+
+word_split_test_data = (
+    ("one", ["one"]),
+    ("one two", ["one", "two"]),
+    ("one two three", ["one", "two", "three"]),
+    ("fromCamelCase", ["from", "Camel", "Case"]),
+    ("FromPascalCase", ["From", "Pascal", "Case"]),
+    ("from-kebab-case", ["from", "kebab", "case"]),
+    ("from_snake_case", ["from", "snake", "case"]),
+    ("FROM_MACRO_CASE", ["FROM", "MACRO", "CASE"]),
+    ("from_Camel_Snake_Case", ["from", "Camel", "Snake", "Case"]),
+    ("From_Pascal_Snake_Case", ["From", "Pascal", "Snake", "Case"]),
+    ("FROM-COBOL-CASE", ["FROM", "COBOL", "CASE"]),
+    ("FromHTTPHeaderCase", ["From", "HTTP", "Header", "Case"]),
+)
+
+
+@pytest.mark.parametrize("word,expected", word_split_test_data)
+def test_word_splitting(word, expected):
+    name_mangler = _NameMangler()
+    assert list(name_mangler.words(word)) == expected
+
 
 test_data = [
-    ["ONE", "one", "One", "one", "one", "ONE"],
-    ["ONE TWO", "oneTwo", "OneTwo", "one-two", "one_two", "ONE_TWO"],
-    [
-        "ONE TWO THREE",
-        "oneTwoThree",
-        "OneTwoThree",
-        "one-two-three",
-        "one_two_three",
-        "ONE_TWO_THREE",
-    ],
-    [
-        "fromCamelCase",
-        "fromCamelCase",
-        "FromCamelCase",
-        "from-camel-case",
-        "from_camel_case",
-        "FROM_CAMEL_CASE",
-    ],
-    [
-        "FromPascalCase",
-        "fromPascalCase",
-        "FromPascalCase",
-        "from-pascal-case",
-        "from_pascal_case",
-        "FROM_PASCAL_CASE",
-    ],
-    [
-        "from-kebab-case",
-        "fromKebabCase",
-        "FromKebabCase",
-        "from-kebab-case",
-        "from_kebab_case",
-        "FROM_KEBAB_CASE",
-    ],
-    [
-        "from_snake_case",
-        "fromSnakeCase",
-        "FromSnakeCase",
-        "from-snake-case",
-        "from_snake_case",
-        "FROM_SNAKE_CASE",
-    ],
-    [
-        "FROM_MACRO_CASE",
-        "fromMacroCase",
-        "FromMacroCase",
-        "from-macro-case",
-        "from_macro_case",
-        "FROM_MACRO_CASE",
-    ],
+    ("camel", "oneTwoThree"),
+    ("pascal", "OneTwoThree"),
+    ("kebab", "one-two-three"),
+    ("snake", "one_two_three"),
+    ("macro", "ONE_TWO_THREE"),
+    ("camel_snake", "one_Two_Three"),
+    ("pascal_snake", "One_Two_Three"),
+    ("spongebob", "ONE_twO_ThREe"),
+    ("cobol", "ONE-TWO-THREE"),
+    ("http_header", "One-Two-Three"),
 ]
 
 
-@pytest.mark.parametrize("name,camel,pascal,kebab,snake,macro", test_data)
-def test_name_mangler(name, camel, pascal, kebab, snake, macro):
+@pytest.mark.parametrize("func_name,expected", test_data)
+def test_name_mangler(func_name, expected):
     name_mangler = _NameMangler()
 
-    assert name_mangler.camel(name) == camel
-    assert name_mangler.pascal(name) == pascal
-    assert name_mangler.kebab(name) == kebab
-    assert name_mangler.snake(name) == snake
-    assert name_mangler.macro(name) == macro
+    func = getattr(name_mangler, func_name)
+    assert func("one two three") == expected

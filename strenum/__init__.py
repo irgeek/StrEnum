@@ -208,3 +208,118 @@ class MacroCaseStrEnum(StrEnum):
 
     def _generate_next_value_(name, *_):
         return _name_mangler.macro(name)
+
+
+class CamelSnakeCaseStrEnum(StrEnum):
+    """
+    A ``StrEnum`` where ``auto()`` will convert the name to `camel_Snake_Case` to
+    produce each member's value.
+
+    Example usage::
+
+        class Example(CamelSnakeCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "upper_Case"
+        assert Example.lower_case == "lower_Case"
+        assert Example.MixedCase == "mixed_Case"
+
+    .. versionadded:: 0.4.8
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.camel_snake(name)
+
+
+class PascalSnakeCaseStrEnum(StrEnum):
+    """
+    A ``StrEnum`` where ``auto()`` will convert the name to `Pascal_Snake_Case` to
+    produce each member's value.
+
+    Example usage::
+
+        class Example(PascalSnakeCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "Upper_Case"
+        assert Example.lower_case == "Lower_Case"
+        assert Example.MixedCase == "Mixed_Case"
+
+    .. versionadded:: 0.4.8
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.pascal_snake(name)
+
+
+class SpongebobCaseStrEnum(StrEnum):
+    """
+    A ``StrEnum`` where ``auto()`` will convert the name to `SpONGEBob_CAse` to
+    produce each member's value.
+
+    Example usage::
+
+        class Example(SpongebobCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "uPpER_cAsE"
+        assert Example.lower_case == "lowER_CASe"
+        assert Example.MixedCase == "MixeD_CAse"
+
+    .. versionadded:: 0.4.8
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.spongebob(name)
+
+
+class CobolCaseStrEnum(StrEnum):
+    """
+    A ``StrEnum`` where ``auto()`` will convert the name to `COBOL-CASE` to
+    produce each member's value.
+
+    Example usage::
+
+        class Example(CobolCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "UPPER-CASE"
+        assert Example.lower_case == "LOWER-CASE"
+        assert Example.MixedCase == "MIXED-CASE"
+
+    .. versionadded:: 0.4.8
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.cobol(name)
+
+
+class HttpHeaderCaseStrEnum(StrEnum):
+    """
+    A ``StrEnum`` where ``auto()`` will convert the name to `HTTP-Header-Case` to
+    produce each member's value.
+
+    Example usage::
+
+        class Example(HttpHeaderCaseStrEnum):
+            UPPER_CASE = auto()
+            lower_case = auto()
+            MixedCase = auto()
+
+        assert Example.UPPER_CASE == "UPPER_CASE"
+        assert Example.lower_case == "LOWER_CASE"
+        assert Example.MixedCase == "MIXED_CASE"
+
+    .. versionadded:: 0.4.8
+    """
+
+    def _generate_next_value_(name, *_):
+        return _name_mangler.http_header(name)
