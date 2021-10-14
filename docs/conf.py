@@ -1,5 +1,5 @@
 # Configuration file for the Sphinx documentation builder.
-# pylint: disable=invalid-name,redefined-builtin,wrong-import-position
+# pylint: disable=invalid-name,redefined-builtin,wrong-import-position,import-error,unused-import
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
@@ -14,8 +14,9 @@
 import os
 import sys
 
-import recommonmark
-from recommonmark.transform import AutoStructify
+import myst_parser
+
+# from recommonmark.transform import AutoStructify
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -43,7 +44,7 @@ extensions = [
     "sphinx.ext.autodoc",
     # "sphinx.ext.viewcode",
     # "sphinx.ext.autosummary",
-    "recommonmark",
+    "myst_parser",
 ]
 
 source_suffix = [".rst", ".md"]
@@ -57,20 +58,6 @@ exclude_patterns = [".venv"]
 
 pygments_style = "sphinx"
 
-autodoc_default_flags = ["members"]
+autodoc_member_order = "bysource"
+autodoc_class_signature = "separated"
 autosummary_generate = True
-
-
-def setup(app):
-    app.add_config_value(
-        "recommonmark_config",
-        {
-            #'url_resolver': lambda url: github_doc_root + url,
-            "auto_toc_tree_section": "Contents",
-            "enable_math": False,
-            "enable_inline_math": False,
-            "enable_eval_rst": True,
-        },
-        True,
-    )
-    app.add_transform(AutoStructify)
