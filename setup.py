@@ -27,7 +27,7 @@ setuptools.setup(
         "docs": [
             "sphinx",
             "sphinx_rtd_theme",
-            "myst_parser",
+            "myst-parser[linkify]",
         ],
         "release": ["twine"],
     },

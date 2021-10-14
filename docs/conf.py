@@ -61,3 +61,8 @@ pygments_style = "sphinx"
 autodoc_member_order = "bysource"
 autodoc_class_signature = "separated"
 autosummary_generate = True
+
+myst_enable_extensions = [
+    "colon_fence",
+    "linkify",
+]

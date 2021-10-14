@@ -22,12 +22,16 @@ class Comparable:
         assert "content-type" == HttpHeader.ContentType
         assert "coNtEnt-tyPe" == HttpHeader.ContentType
 
-    Note that your ``_cmp_values`` method *must not* return ``self`` as one of
-    the values to be compared -- that would result in infinite recursion.
-    Instead, perform operations on ``self.value`` and return that.
+    .. note::
+        Your ``_cmp_values`` method *must not* return ``self`` as one of the
+        values to be compared -- that would result in infinite recursion.
+        Instead, perform operations on ``self.value`` and return that.
 
-    **Warning:** A bug in Python prior to 3.7.1 prevents mix-ins working with Enum
-    subclasses.
+    .. warning::
+        A bug in Python prior to 3.7.1 prevents mix-ins working with Enum
+        subclasses.
+
+    .. versionadded:: 0.4.6
     """
 
     def __eq__(self, other):

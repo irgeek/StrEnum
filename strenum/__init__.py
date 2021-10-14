@@ -17,15 +17,11 @@ _name_mangler = _NameMangler()
 # `self` arguments.
 # pylint: disable=no-self-argument
 
-"""
-StrEnum contains a collection of subclasses of Python's `enum.Enum` that
-inherit from `str` to complement `enum.IntEnum` in the standard library.
-"""
-
 
 class StrEnum(str, enum.Enum):
     """
-    StrEnum is a Python `enum.Enum` that inherits from `str`.
+    StrEnum is a Python ``enum.Enum`` that inherits from ``str``. The default
+    ``auto()`` behavior uses the member name as its value.
 
     Example usage::
 
@@ -55,7 +51,8 @@ class StrEnum(str, enum.Enum):
 
 class LowercaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the folds values to lowercase.
+    A ``StrEnum`` where ``auto()`` will convert the name to `lowercase` to
+    produce each member's value.
 
     Example usage::
 
@@ -68,6 +65,7 @@ class LowercaseStrEnum(StrEnum):
         assert Example.lower_case == "lower_case"
         assert Example.MixedCase == "mixedcase"
 
+    .. versionadded:: 0.4.3
     """
 
     def _generate_next_value_(name, *_):
@@ -76,7 +74,8 @@ class LowercaseStrEnum(StrEnum):
 
 class UppercaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the folds values to UPPERCASE.
+    A ``StrEnum`` where ``auto()`` will convert the name to `UPPERCASE` to
+    produce each member's value.
 
     Example usage::
 
@@ -88,6 +87,8 @@ class UppercaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "UPPER_CASE"
         assert Example.lower_case == "LOWER_CASE"
         assert Example.MixedCase == "MIXEDCASE"
+
+    .. versionadded:: 0.4.3
     """
 
     def _generate_next_value_(name, *_):
@@ -96,7 +97,8 @@ class UppercaseStrEnum(StrEnum):
 
 class CamelCaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the converts values to camelCase.
+    A ``StrEnum`` where ``auto()`` will convert the name to `camelCase` to
+    produce each member's value.
 
     Example usage::
 
@@ -108,6 +110,8 @@ class CamelCaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "upperCase"
         assert Example.lower_case == "lowerCase"
         assert Example.MixedCase == "mixedCase"
+
+    .. versionadded:: 0.4.5
     """
 
     def _generate_next_value_(name, *_):
@@ -116,7 +120,8 @@ class CamelCaseStrEnum(StrEnum):
 
 class PascalCaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the converts values to PascalCase.
+    A ``StrEnum`` where ``auto()`` will convert the name to `PascalCase` to
+    produce each member's value.
 
     Example usage::
 
@@ -128,6 +133,8 @@ class PascalCaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "UpperCase"
         assert Example.lower_case == "LowerCase"
         assert Example.MixedCase == "MixedCase"
+
+    .. versionadded:: 0.4.5
     """
 
     def _generate_next_value_(name, *_):
@@ -136,7 +143,8 @@ class PascalCaseStrEnum(StrEnum):
 
 class KebabCaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the converts values to kebab-case.
+    A ``StrEnum`` where ``auto()`` will convert the name to `kebab-case` to
+    produce each member's value.
 
     Example usage::
 
@@ -148,6 +156,8 @@ class KebabCaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "upper-case"
         assert Example.lower_case == "lower-case"
         assert Example.MixedCase == "mixed-case"
+
+    .. versionadded:: 0.4.5
     """
 
     def _generate_next_value_(name, *_):
@@ -156,7 +166,8 @@ class KebabCaseStrEnum(StrEnum):
 
 class SnakeCaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the converts values to snake_case.
+    A ``StrEnum`` where ``auto()`` will convert the name to `snake_case` to
+    produce each member's value.
 
     Example usage::
 
@@ -168,6 +179,8 @@ class SnakeCaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "upper_case"
         assert Example.lower_case == "lower_case"
         assert Example.MixedCase == "mixed_case"
+
+    .. versionadded:: 0.4.5
     """
 
     def _generate_next_value_(name, *_):
@@ -176,7 +189,8 @@ class SnakeCaseStrEnum(StrEnum):
 
 class MacroCaseStrEnum(StrEnum):
     """
-    A `StrEnum` that the converts values to MACRO_CASE.
+    A ``StrEnum`` where ``auto()`` will convert the name to `MACRO_CASE` to
+    produce each member's value.
 
     Example usage::
 
@@ -188,6 +202,8 @@ class MacroCaseStrEnum(StrEnum):
         assert Example.UPPER_CASE == "UPPER_CASE"
         assert Example.lower_case == "LOWER_CASE"
         assert Example.MixedCase == "MIXED_CASE"
+
+    .. versionadded:: 0.4.6
     """
 
     def _generate_next_value_(name, *_):

@@ -72,12 +72,13 @@ assert HttpMethod.Post == "POST"
 ```
 
 As well as classes whose `auto()` value converts each member name to camelCase,
-PascalCase, kebab-case and snake_case:
+PascalCase, kebab-case, snake_case and MACRO_CASE:
 
 ```python
 from enum import auto
 from strenum import CamelCaseStrEnum, PascalCaseStrEnum
 from strenum import KebabCaseStrEnum, SnakeCaseStrEnum
+from strenum import MacroCaseStrEnum
 
 class CamelTestEnum(CamelCaseStrEnum):
     OneTwoThree = auto()
@@ -94,10 +95,14 @@ class KebabTestEnum(KebabCaseStrEnum):
 class SnakeTestEnum(SnakeCaseStrEnum):
     OneTwoThree = auto()
 
+class SnakeTestEnum(MacroCaseStrEnum):
+    OneTwoThree = auto()
+
 assert CamelTestEnum.OneTwoThree == "oneTwoThree"
 assert PascalTestEnum.OneTwoThree == "OneTwoThree"
 assert KebabTestEnum.OneTwoThree == "one-two-three"
 assert SnakeTestEnum.OneTwoThree == "one_two_three"
+assert MacroCaseStrEnum.OneTwoThree == "ONE_TWO_THREE"
 ```
 
 As with any Enum you can, of course, manually assign values.
@@ -111,8 +116,8 @@ class Shape(StrEnum):
 assert Shape.CIRCLE == "Circle"
 ```
 
-Doing this with other classes, though, won't manipulate values--whatever you
-assign is the value they will have.
+Doing this with the case-changing classes, though, won't manipulate
+values--whatever you assign is the value they end up with.
 
 ```python
 from strenum import KebabCaseStrEnum
