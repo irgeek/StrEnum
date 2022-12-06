@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/irgeek/StrEnum/workflows/Python%20package/badge.svg)](https://github.com/irgeek/StrEnum/actions)
 
 StrEnum is a Python `enum.Enum` that inherits from `str` to complement
-`enum.IntEnum` in the standard library. Supports python 3.6+.
+`enum.IntEnum` in the standard library. Supports python 3.7+.
 
 ## Installation
 
