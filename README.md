@@ -165,6 +165,6 @@ python3 -m venv .venv
 
 **N.B. Starting with Python 3.11, `enum.StrEnum` is available in the standard
 library. This implementation is _not_ a drop-in replacement for the standard
-library implementation. Sepcifically, the Python devs have decided to case fold
+library implementation. Specifically, the Python devs have decided to case fold
 name to lowercase by default when `auto()` is used which I think violates the
 principle of least surprise.**
