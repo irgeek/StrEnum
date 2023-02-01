@@ -7,6 +7,9 @@ word_split_test_data = (
     ("one", ["one"]),
     ("one two", ["one", "two"]),
     ("one two three", ["one", "two", "three"]),
+    ("ONETwoThree", ["ONE", "Two", "Three"]),
+    ("OneTWOThree", ["One", "TWO", "Three"]),
+    ("OneTwoTHREE", ["One", "Two", "THREE"]),
     ("fromCamelCase", ["from", "Camel", "Case"]),
     ("FromPascalCase", ["From", "Pascal", "Case"]),
     ("from-kebab-case", ["from", "kebab", "case"]),
@@ -15,7 +18,7 @@ word_split_test_data = (
     ("from_Camel_Snake_Case", ["from", "Camel", "Snake", "Case"]),
     ("From_Pascal_Snake_Case", ["From", "Pascal", "Snake", "Case"]),
     ("FROM-COBOL-CASE", ["FROM", "COBOL", "CASE"]),
-    ("FromHTTPHeaderCase", ["From", "HTTP", "Header", "Case"]),
+    ("From-Http-Header-Case", ["From", "Http", "Header", "Case"]),
 )
 
 

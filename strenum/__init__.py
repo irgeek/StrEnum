@@ -304,7 +304,7 @@ class CobolCaseStrEnum(StrEnum):
 
 class HttpHeaderCaseStrEnum(StrEnum):
     """
-    A ``StrEnum`` where ``auto()`` will convert the name to `HTTP-Header-Case` to
+    A ``StrEnum`` where ``auto()`` will convert the name to `Http-Header-Case` to
     produce each member's value.
 
     Example usage::
