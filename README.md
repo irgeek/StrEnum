@@ -34,15 +34,15 @@ class HttpMethod(StrEnum):
 
 assert HttpMethod.GET == "GET"
 
-## You can use StrEnum values just like strings:
+# You can use StrEnum values just like strings:
 
 import urllib.request
 
 req = urllib.request.Request('https://www.python.org/', method=HttpMethod.HEAD)
 with urllib.request.urlopen(req) as response:
-   html = response.read()
+    html = response.read()
 
-assert len(html) == 0 # HEAD requests do not (usually) include a body
+assert len(html) == 0  # HEAD requests do not (usually) include a body
 ```
 
 There are classes whose `auto()` value folds each member name to upper or lower
@@ -52,19 +52,23 @@ case:
 from enum import auto
 from strenum import LowercaseStrEnum, UppercaseStrEnum
 
+
 class Tag(LowercaseStrEnum):
     Head = auto()
     Body = auto()
     Div = auto()
 
+
 assert Tag.Head == "head"
 assert Tag.Body == "body"
 assert Tag.Div == "div"
+
 
 class HttpMethod(UppercaseStrEnum):
     Get = auto()
     Head = auto()
     Post = auto()
+
 
 assert HttpMethod.Get == "GET"
 assert HttpMethod.Head == "HEAD"
@@ -79,6 +83,7 @@ from enum import auto
 from strenum import CamelCaseStrEnum, PascalCaseStrEnum
 from strenum import KebabCaseStrEnum, SnakeCaseStrEnum
 from strenum import MacroCaseStrEnum
+
 
 class CamelTestEnum(CamelCaseStrEnum):
     OneTwoThree = auto()
@@ -95,14 +100,16 @@ class KebabTestEnum(KebabCaseStrEnum):
 class SnakeTestEnum(SnakeCaseStrEnum):
     OneTwoThree = auto()
 
-class SnakeTestEnum(MacroCaseStrEnum):
+
+class MacroTestEnum(MacroCaseStrEnum):
     OneTwoThree = auto()
+
 
 assert CamelTestEnum.OneTwoThree == "oneTwoThree"
 assert PascalTestEnum.OneTwoThree == "OneTwoThree"
 assert KebabTestEnum.OneTwoThree == "one-two-three"
 assert SnakeTestEnum.OneTwoThree == "one_two_three"
-assert MacroCaseStrEnum.OneTwoThree == "ONE_TWO_THREE"
+assert MacroTestEnum.OneTwoThree == "ONE_TWO_THREE"
 ```
 
 As with any Enum you can, of course, manually assign values.
@@ -110,8 +117,10 @@ As with any Enum you can, of course, manually assign values.
 ```python
 from strenum import StrEnum
 
+
 class Shape(StrEnum):
     CIRCLE = "Circle"
+
 
 assert Shape.CIRCLE == "Circle"
 ```
@@ -122,12 +131,12 @@ values--whatever you assign is the value they end up with.
 ```python
 from strenum import KebabCaseStrEnum
 
+
 class Shape(KebabCaseStrEnum):
     CIRCLE = "Circle"
 
-# This will raise an AssertionError because the value wasn't converted to
-# kebab-case.
 
+# This will raise an AssertionError because the value wasn't converted to kebab-case.
 assert Shape.CIRCLE == "circle"
 ```
 
