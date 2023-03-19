@@ -17,7 +17,7 @@ class _NameMangler:
             camel_Snake_Case
             Pascal_Snake_Case
             COBOL-CASE
-            HTTP-Header-Case
+            Http-Header-Case
 
         It _does not_ handle splitting spongebob case.
         """
@@ -121,7 +121,7 @@ class _NameMangler:
 
     def http_header(self, name):
         """
-        Convert a name to HTTP-Header-Case
+        Convert a name to Http-Header-Case
         """
 
         return "-".join(w.title() for w in self.words(name))
