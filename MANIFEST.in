@@ -1,2 +1,4 @@
+*.pyi
+*.typed
 include versioneer.py
 include strenum/_version.py
