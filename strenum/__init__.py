@@ -314,9 +314,9 @@ class HttpHeaderCaseStrEnum(StrEnum):
             lower_case = auto()
             MixedCase = auto()
 
-        assert Example.UPPER_CASE == "UPPER_CASE"
-        assert Example.lower_case == "LOWER_CASE"
-        assert Example.MixedCase == "MIXED_CASE"
+        assert Example.UPPER_CASE == "Upper-Case"
+        assert Example.lower_case == "Lower-Case"
+        assert Example.MixedCase == "Mixed-Case"
 
     .. versionadded:: 0.4.8
     """
