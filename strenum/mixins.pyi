@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Any
 
 class Comparable:
     def __eq__(self, other: Any) -> bool: ...
