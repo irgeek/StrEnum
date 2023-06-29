@@ -16,6 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/irgeek/StrEnum",
     packages=["strenum"],
+    package_data={"strenum": ["*.typed", "*.pyi"]},
     extras_require={
         "test": [
             "pytest",
