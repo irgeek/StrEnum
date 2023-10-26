@@ -45,6 +45,9 @@ class StrEnum(str, enum.Enum):
     def __str__(self):
         return str(self.value)
 
+    def __repr__(self) -> str:
+        return str.__repr__(self.value)
+
     def _generate_next_value_(name, *_):
         return name
 

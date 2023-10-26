@@ -24,6 +24,7 @@ setuptools.setup(
             "pytest-cov",
             "pytest-pylint",
             "pylint",
+            "pydantic",
         ],
         "docs": [
             "sphinx",

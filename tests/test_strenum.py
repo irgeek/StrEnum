@@ -1,6 +1,9 @@
 # pylint:disable=missing-docstring,invalid-name
 from enum import auto
+
 import pytest
+from pydantic import BaseModel
+
 from strenum import StrEnum
 
 
@@ -14,6 +17,10 @@ class HttpMethod(StrEnum):
     OPTIONS = auto()
     TRACE = auto()
     PATCH = auto()
+
+
+class DummyModel(BaseModel):
+    http_method: HttpMethod
 
 
 def test_isinstance_str():
@@ -39,6 +46,24 @@ def test_str_hash():
 def test_str_cmp():
     assert HttpMethod.GET > "FET"
     assert HttpMethod.GET < "GETA"
+
+
+def test_list_str_enum():
+    assert list(HttpMethod) == [
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "OPTIONS",
+        "TRACE",
+        "PATCH",
+    ]
+
+
+def test_pydantic_model_dump_strenum_field():
+    assert DummyModel(http_method=HttpMethod.GET).model_dump() == {"http_method": "GET"}
 
 
 def test_nonstring_fails():
