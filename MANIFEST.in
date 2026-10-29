@@ -1,3 +1,4 @@
 include versioneer.py
 include strenum/_version.py
-exclude tests/*
+recursive-include tests *.py
+include pytest.ini Makefile
