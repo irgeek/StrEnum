@@ -1,3 +1,1 @@
-include versioneer.py
-include strenum/_version.py
-exclude tests/*
+prune docs/build

@@ -2,7 +2,6 @@
 import pytest
 from strenum import _NameMangler
 
-
 word_split_test_data = (
     ("one", ["one"]),
     ("one two", ["one", "two"]),

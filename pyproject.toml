@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "StrEnum"
+dynamic = ["version"]
+description = "An Enum that inherits from str."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "James Sinclair", email = "james@nurfherder.com" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/irgeek/StrEnum"
+Documentation = "https://strenum.readthedocs.io/"
+
+[dependency-groups]
+dev = [{ include-group = "test" }, { include-group = "lint" }]
+test = ["pytest", "pytest-cov"]
+lint = ["black", "pylint"]
+docs = ["sphinx", "sphinx_rtd_theme", "myst-parser[linkify]"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["strenum"]
+
+[tool.setuptools.package-data]
+strenum = ["py.typed", "*.pyi"]
+
+[tool.setuptools_scm]
+version_file = "src/strenum/_version.py"
+
+[tool.coverage.run]
+omit = ["src/strenum/_version.py"]

@@ -1,2 +1,5 @@
+[MASTER]
+ignore=_version.py
+
 [MESSAGES CONTROL]
 disable=missing-module-docstring

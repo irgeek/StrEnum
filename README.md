@@ -147,26 +147,41 @@ discuss what you would like to change.
 
 Please ensure tests pass before submitting a PR. This repository uses
 [Black](https://black.readthedocs.io/en/stable/) and
-[Pylint](https://www.pylint.org/) for consistency. Both are run automatically
-as part of the test suite.
+[Pylint](https://www.pylint.org/) for consistency. Both can be run with
+`make lint`.
 
 ## Running the tests
 
-Tests can be run using `make`:
+This project is managed with [uv](https://docs.astral.sh/uv/). Tests can be
+run using `make`:
 
 ```
 make test
 ```
 
-This will create a virutal environment, install the module and its test
-dependencies and run the tests. Alternatively you can do the same thing
-manually:
+This will create a virtual environment, install the module and its
+development dependencies and run the tests. Alternatively you can do the same
+thing directly with uv:
 
 ```
-python3 -m venv .venv
-.venv/bin/pip install .[test]
-.venv/bin/pytest
+uv run pytest
+uv run black --check .
+uv run pylint src/strenum/*.py tests/*.py
 ```
+
+## Releasing
+
+Releases are published to PyPI by the `Release` GitHub workflow. The version
+comes from the git tag, so there is nothing to edit before releasing:
+
+```
+git tag -a v0.4.16 -m "Release 0.4.16"
+git push origin v0.4.16
+```
+
+The workflow runs the tests and linters, builds the sdist and wheel, checks
+that their version matches the tag, and then waits for approval in the `pypi`
+environment before uploading to PyPI using trusted publishing.
 
 ## License
 
