@@ -37,9 +37,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Check formatting with black
-        run: uv run --locked --no-default-groups --group lint black --check .
+        run: uv run --locked black --check .
       - name: Lint with pylint
-        run: uv run --locked --no-default-groups --group lint pylint src/strenum/*.py tests/*.py
+        run: uv run --locked pylint src/strenum/*.py tests/*.py
 
   build:
     runs-on: ubuntu-latest
