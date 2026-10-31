@@ -35,13 +35,14 @@ docs = ["sphinx", "sphinx_rtd_theme", "myst-parser[linkify]"]
 release = ["build", "twine"]
 
 [tool.setuptools]
+package-dir = { "" = "src" }
 packages = ["strenum"]
 
 [tool.setuptools.package-data]
 strenum = ["py.typed", "*.pyi"]
 
 [tool.setuptools_scm]
-version_file = "strenum/_version.py"
+version_file = "src/strenum/_version.py"
 
 [tool.coverage.run]
-omit = ["strenum/_version.py"]
+omit = ["src/strenum/_version.py"]

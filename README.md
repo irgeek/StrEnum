@@ -167,7 +167,7 @@ python3 -m venv .venv
 .venv/bin/pip install .[test,lint]
 .venv/bin/pytest
 .venv/bin/black --check .
-.venv/bin/pylint strenum/*.py tests/*.py
+.venv/bin/pylint src/strenum/*.py tests/*.py
 ```
 
 ## License

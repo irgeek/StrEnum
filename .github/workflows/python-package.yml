@@ -47,7 +47,7 @@ jobs:
       - name: Check formatting with black
         run: black --check .
       - name: Lint with pylint
-        run: pylint strenum/*.py tests/*.py
+        run: pylint src/strenum/*.py tests/*.py
 
   build:
     runs-on: ubuntu-latest

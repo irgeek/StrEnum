@@ -7,7 +7,7 @@ test: .venv/bin/pytest
 
 lint: .venv/bin/pylint
 	@.venv/bin/black --check .
-	@.venv/bin/pylint strenum/*.py tests/*.py
+	@.venv/bin/pylint src/strenum/*.py tests/*.py
 
 dist: test lint .venv/bin/twine
 	@.venv/bin/python3 -m build
