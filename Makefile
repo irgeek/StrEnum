@@ -1,6 +1,4 @@
-.PHONY: test lint dist upload upload-test clean
-
-TWINE_OPTIONS := --disable-progress-bar --skip-existing
+.PHONY: test lint dist clean
 
 test:
 	@uv run pytest -v
@@ -12,17 +10,6 @@ lint:
 dist: test lint
 	@rm -rf dist/
 	@uv build
-
-upload: dist
-	@uv run --group release twine upload \
-		$(TWINE_OPTIONS) \
-		dist/*
-
-upload-test: dist
-	@uv run --group release twine upload \
-		$(TWINE_OPTIONS) \
-		--repository-url https://test.pypi.org/legacy/ \
-		dist/*
 
 clean:
 	@rm -rf .venv/ dist/ build/ src/*.egg-info .tox/ .eggs/ .pytest_cache/ .coverage
