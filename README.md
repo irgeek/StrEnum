@@ -147,8 +147,8 @@ discuss what you would like to change.
 
 Please ensure tests pass before submitting a PR. This repository uses
 [Black](https://black.readthedocs.io/en/stable/) and
-[Pylint](https://www.pylint.org/) for consistency. Both are run automatically
-as part of the test suite.
+[Pylint](https://www.pylint.org/) for consistency. Both can be run with
+`make lint`.
 
 ## Running the tests
 
@@ -158,14 +158,16 @@ Tests can be run using `make`:
 make test
 ```
 
-This will create a virutal environment, install the module and its test
+This will create a virtual environment, install the module and its test
 dependencies and run the tests. Alternatively you can do the same thing
 manually:
 
 ```
 python3 -m venv .venv
-.venv/bin/pip install .[test]
+.venv/bin/pip install .[test,lint]
 .venv/bin/pytest
+.venv/bin/black --check .
+.venv/bin/pylint strenum/*.py tests/*.py
 ```
 
 ## License

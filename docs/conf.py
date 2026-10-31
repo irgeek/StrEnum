@@ -13,15 +13,13 @@
 #
 import os
 import sys
+from importlib.metadata import version as _dist_version
 
 import myst_parser
 
 # from recommonmark.transform import AutoStructify
 
 sys.path.insert(0, os.path.abspath(".."))
-
-
-import strenum
 
 # -- Project information -----------------------------------------------------
 
@@ -30,7 +28,7 @@ copyright = "2021, James Sinclair"
 author = "James Sinclair"
 
 # The full version, including alpha/beta/rc tags
-release = strenum.__version__
+release = _dist_version("StrEnum")
 github_doc_root = "https://github.com/irgeek/strenum/tree/master/docs/"
 
 

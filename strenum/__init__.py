@@ -1,10 +1,19 @@
 import enum
-from ._version import get_versions
+import itertools
 from ._name_mangler import _NameMangler
 
-__version__ = get_versions()["version"]
-__version_info__ = tuple(int(n) for n in __version__.partition("+")[0].split("."))
-del get_versions
+try:
+    from ._version import __version__, __version_tuple__
+except ImportError:  # pragma: no cover - only in an unbuilt source checkout
+    __version__ = "0+unknown"
+    __version_tuple__ = (0, "unknown")
+
+# Only the leading integer (release) components, e.g. (0, 4, 16) for both
+# "0.4.16" and the development version "0.4.16.dev3+g1234abc".
+__version_info__ = tuple(
+    itertools.takewhile(lambda part: isinstance(part, int), __version_tuple__)
+)
+del itertools, __version_tuple__
 
 _name_mangler = _NameMangler()
 
