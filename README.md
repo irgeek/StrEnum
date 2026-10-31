@@ -169,6 +169,20 @@ uv run black --check .
 uv run pylint src/strenum/*.py tests/*.py
 ```
 
+## Releasing
+
+Releases are published to PyPI by the `Release` GitHub workflow. The version
+comes from the git tag, so there is nothing to edit before releasing:
+
+```
+git tag -a v0.4.16 -m "Release 0.4.16"
+git push origin v0.4.16
+```
+
+The workflow runs the tests and linters, builds the sdist and wheel, checks
+that their version matches the tag, and then waits for approval in the `pypi`
+environment before uploading to PyPI using trusted publishing.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
