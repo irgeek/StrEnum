@@ -152,22 +152,21 @@ Please ensure tests pass before submitting a PR. This repository uses
 
 ## Running the tests
 
-Tests can be run using `make`:
+This project is managed with [uv](https://docs.astral.sh/uv/). Tests can be
+run using `make`:
 
 ```
 make test
 ```
 
-This will create a virtual environment, install the module and its test
-dependencies and run the tests. Alternatively you can do the same thing
-manually:
+This will create a virtual environment, install the module and its
+development dependencies and run the tests. Alternatively you can do the same
+thing directly with uv:
 
 ```
-python3 -m venv .venv
-.venv/bin/pip install .[test,lint]
-.venv/bin/pytest
-.venv/bin/black --check .
-.venv/bin/pylint src/strenum/*.py tests/*.py
+uv run pytest
+uv run black --check .
+uv run pylint src/strenum/*.py tests/*.py
 ```
 
 ## License

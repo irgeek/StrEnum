@@ -28,11 +28,12 @@ classifiers = [
 Homepage = "https://github.com/irgeek/StrEnum"
 Documentation = "https://strenum.readthedocs.io/"
 
-[project.optional-dependencies]
+[dependency-groups]
+dev = [{ include-group = "test" }, { include-group = "lint" }]
 test = ["pytest", "pytest-cov"]
 lint = ["black", "pylint"]
 docs = ["sphinx", "sphinx_rtd_theme", "myst-parser[linkify]"]
-release = ["build", "twine"]
+release = ["twine"]
 
 [tool.setuptools]
 package-dir = { "" = "src" }
